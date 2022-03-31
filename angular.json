@@ -99,6 +99,62 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "To-Do:build:production",
+            "firebaseProject": "to-do-50647",
+            "firebaseHostingSite": "to-do-50647"
+          }
+        }
+      }
+    },
+    "home": {
+      "projectType": "library",
+      "root": "projects/home",
+      "sourceRoot": "projects/home/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/home/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/home/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/home/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "task": {
+      "projectType": "library",
+      "root": "projects/task",
+      "sourceRoot": "projects/task/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/task/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/task/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/task/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

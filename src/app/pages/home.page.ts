@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({ selector: 'app-home-page', 

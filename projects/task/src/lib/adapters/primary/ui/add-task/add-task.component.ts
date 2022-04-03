@@ -15,6 +15,11 @@ export class AddTaskComponent {
 
 
   onContantSubmited(form: FormGroup): void {
+    if(form.valid){
+      this.addTask = false;
+      this.showFrom = false;
+      return
+    }
     if (this.addTask) {
       this._addsTaskDto.add({
         content: form.get('content')?.value

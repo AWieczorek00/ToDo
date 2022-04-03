@@ -7,4 +7,5 @@ changeDetection: ChangeDetectionStrategy.OnPush,})
 
 export class HomePage {
     myDate = new Date();
+    showLib : boolean = false;
 }

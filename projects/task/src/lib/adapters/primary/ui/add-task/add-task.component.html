@@ -1,0 +1,18 @@
+<button *ngIf="showButtonAddTask" style="background-color: #7749F8; margin-left: 13%;"
+    class="mt-1 btn btn-primary btn-sm" (click)="showFrom = true;showButtonAddTask=false">Dodaj zadanie</button>
+<div *ngIf="showFrom">
+    <form style="margin-left: 13%;" [formGroup]="content" (ngSubmit)="onContantSubmited(content)">
+        <div class="row g-3 align-items-center">
+            <div class="col-5">
+                <textarea class="form-control" type="text" formControlName="content"
+                    placeholder="Twoje zadanie"></textarea>
+            </div>
+        </div>
+        <div class="mt-4">
+            <input id="cos" style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary"
+                (click)="addTask = true;showButtonAddTask=true">
+            <button style="background-color: #7749F8;" class="ms-5 btn btn-primary"
+                (click)="showButtonAddTask=true">Anuluj</button>
+        </div>
+    </form>
+</div>

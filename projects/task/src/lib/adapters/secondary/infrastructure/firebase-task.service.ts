@@ -5,19 +5,23 @@ import { map } from 'rxjs/operators';
 import { GetsAllTaskDtoPort } from '../../../application/ports/secondary/gets-all-task.dto-port';
 import { TaskDTO } from '../../../application/ports/secondary/task.dto';
 import { filterByCriterion } from '@lowgular/shared';
-
 import { AddsTaskDtoPort } from '../../../application/ports/secondary/adds-task.dto-port';
+import { RemovesTaskDtoPort } from '../../../application/ports/secondary/removes-task.dto-port';
 
 @Injectable()
-export class FirebaseTaskService implements GetsAllTaskDtoPort, AddsTaskDtoPort {
+export class FirebaseTaskService implements GetsAllTaskDtoPort, AddsTaskDtoPort, RemovesTaskDtoPort {
   constructor(private _client: AngularFirestore) {
   }
 
   getAll(criterion: Partial<TaskDTO>): Observable<TaskDTO[]> {
-    return this._client.collection<TaskDTO>('tasks').valueChanges(({idField: 'id'})).pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
+    return this._client.collection<TaskDTO>('tasks').valueChanges(({ idField: 'id' })).pipe(map((data: TaskDTO[]) => filterByCriterion(data, criterion)));
   }
 
   add(task: Partial<TaskDTO>): void {
     this._client.collection('tasks').add(task);
+  }
+
+  remove(id: string): void {
+    this._client.doc('tasks/' + id).delete();
   }
 }

@@ -9,8 +9,8 @@
             </div>
         </div>
         <div class="mt-4">
-            <input id="cos" style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary"
-                (click)="addTask = true;showButtonAddTask=true">
+            <input (click)="sendData()" id="cos" style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary"
+                (click)="addTask = true;showButtonAddTask=true;" >
             <button style="background-color: #7749F8;" class="ms-5 btn btn-primary"
                 (click)="showButtonAddTask=true">Anuluj</button>
         </div>

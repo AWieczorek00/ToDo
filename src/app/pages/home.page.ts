@@ -8,10 +8,16 @@ changeDetection: ChangeDetectionStrategy.OnPush,})
 export class HomePage {
     myDate = new Date();
     showLib : boolean = false;
-    
+    showNotification : boolean = false;
+    creatNotification : string = "";
 
 
     receiveMessage($event: any){
         this.showLib = $event
+    }
+
+    receiveData($showNotification:any,$creatNotification:any){
+        this.showNotification =  $showNotification
+        this.creatNotification = $creatNotification
     }
 }

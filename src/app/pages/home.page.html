@@ -18,9 +18,9 @@
         </div>
     </div>
     <hr class="w-75 mx-auto">
-    <lib-home></lib-home>
-    <lib-tasks></lib-tasks>
-    <lib-add-task></lib-add-task>
+    <lib-home *ngIf="!showLib" (messageEvent)="receiveMessage($event)" ></lib-home>
+    <lib-tasks *ngIf="showLib"></lib-tasks>
+    <lib-add-task *ngIf="showLib"></lib-add-task>
 </body>
 
 </html>

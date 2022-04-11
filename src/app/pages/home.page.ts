@@ -16,8 +16,9 @@ export class HomePage {
         this.showLib = $event
     }
 
-    receiveData($showNotification:any,$creatNotification:any){
-        this.showNotification =  $showNotification
-        this.creatNotification = $creatNotification
+    receiveData($event:any){
+        console.log("cos")
+        this.showNotification =  $event
+        // this.creatNotification = $creatNotification
     }
 }

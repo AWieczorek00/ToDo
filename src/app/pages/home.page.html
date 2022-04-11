@@ -10,11 +10,7 @@
 
 
 <body>
-    <nav style="background-color: #7749F8;" class="navbar navbar-expand-lg navbar-light  ">
-        <div class="container-fluid ps-5">
-            <h3 style="margin-left: 9%;" class="navbar-brand text-white ">To-Do App</h3>
-        </div>
-    </nav>
+    <lib-navbar></lib-navbar>
     <div style="margin-left: 11%;" class="container mt-3">
         <div class="row">
             <h2 class="col-md-auto">
@@ -36,9 +32,7 @@
         </div>
     </div>
     <hr class="w-75 mx-auto">
-    <lib-home *ngIf="!showLib" (messageEvent)="receiveMessage($event)"></lib-home>
-    <lib-tasks *ngIf="showLib"></lib-tasks>
-    <lib-add-task *ngIf="showLib"></lib-add-task>
+    <lib-home></lib-home>
 </body>
 
 </html>

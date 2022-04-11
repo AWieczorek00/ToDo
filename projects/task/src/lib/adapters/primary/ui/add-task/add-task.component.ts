@@ -18,12 +18,12 @@ export class AddTaskComponent {
 
 
   @Output() sendNotification = new EventEmitter<boolean>();
-  @Output() sendMessage = new EventEmitter<string>();
+  // @Output() sendMessage = new EventEmitter<string>();
 
 
-  sendData() {
+  sendMessage() {
     this.sendNotification.emit(this.showNotification);
-    // this.sendMessage.emit(this.creatNotification);
+    
   }
 
 
@@ -35,7 +35,8 @@ export class AddTaskComponent {
     }
     if (this.addTask) {
       this._addsTaskDto.add({
-        content: form.get('content')?.value
+        content: form.get('content')?.value,
+        isActive: false
       });
     }
     this.addTask = false;

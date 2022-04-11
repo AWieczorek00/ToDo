@@ -1,14 +1,82 @@
-<div>
-  <fieldset *ngFor="let item of tasks$ | async">
-    <div style="margin-left: 13%;" class="form-check pt-2">
-      <input class="form-check-input" value="{{item.id}}" type="radio" name="{{item.id}}" [id]="item.id">
-      {{item.content}}
-      <button (click)="onDeleteClicked(item.id)" (click)="sendData()" class="btn-primary">Usuń</button>
-      <!-- <label class="form-check-label" for="flexRadioDefault1" [id]="item.id">
-        {{item.content}}
-      </label> -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+    <path
+      d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+  </symbol>
+</svg>
+
+
+<div style="margin-left: 11%;" class="container mt-3">
+  <div class="row">
+    <h2 class="col-md-auto">
+      TODAY
+    </h2>
+    <div class="col fs-4 fw-normal y-1">
+      {{myDate | date:'dd-MM-yyyy'}}
     </div>
-  </fieldset>
+
+    <div *ngIf="showAlert" style="width: 15%; margin-right: 13%;" class=" alert alert-success d-flex align-items-center"
+      role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+        <use xlink:href="#check-circle-fill" />
+      </svg>
+      <div>
+        {{deleteAlert}}
+      </div>
+    </div>
+
+  </div>
 </div>
+
 <hr class="w-75 mx-auto">
 
+<div class="contiener">
+  <fieldset class="row justify-content-start" *ngFor="let item of tasks$ | async">
+    <div style="margin-left: 13%;" class="col-6 form-check pt-2 ">
+      <input class="form-check-input rounded-circle pointer" [ngClass]="{ 'bg-success': item.isActive === true }"
+        [value]="item.id" type="checkbox" (change)="checkBox(item)" [checked]="item.isActive">
+      <div class="d-inline" [ngClass]="{ 'text-decoration-line-through': item.isActive === true }">
+        {{item.content}}
+      </div>
+    </div>
+
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label>Czy na pewno chcesz usunąć to zadanie?</label>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"
+          (click)="onDeleteClicked(item.id);modal.close();showAlert=true">Tak</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Zamkni</button>
+      </div>
+    </ng-template>
+
+    <div style="margin-left: 20%;" class="col-1 btn-group" dropdown #dropdown="bs-dropdown">
+      <button id="button-basic" dropdownToggle type="button" class="bg-white dropdown-toggle border-0"
+        aria-controls="dropdown-basic">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots"
+          viewBox="0 0 16 16">
+          <path
+            d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
+        </svg>
+
+        <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+        <li role="menuitem"><a class="dropdown-item" (click)="open(content)">Usuń</a></li>
+      </ul>
+    </div>
+
+
+  </fieldset>
+</div>
+
+<hr class="w-75 mx-auto">

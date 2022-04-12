@@ -7,6 +7,8 @@ import { TasksComponentModule } from '../../../projects/task/src/lib/adapters/pr
 import { FirebaseTaskServiceModule } from '../../../projects/task/src/lib/adapters/secondary/infrastructure/firebase-task.service-module';
 import { AddTaskComponentModule } from '../../../projects/task/src/lib/adapters/primary/ui/add-task/add-task.component-module';
 import { NavbarComponentModule } from '../../../projects/home/src/lib/adapters/primary/ui/navbar.component-module';
+import { ImageCardComponentModule } from '../../../projects/home/src/lib/adapters/primary/ui/image-card.component-module';
+import { FirebaseImageServiceModule } from '../../../projects/home/src/lib/adapters/secondary/infrastructure/firebase-image.service-module';
 
 @NgModule({ imports: [CommonModule, 
       RouterModule.forChild([
@@ -19,7 +21,9 @@ import { NavbarComponentModule } from '../../../projects/home/src/lib/adapters/p
   TasksComponentModule,
   FirebaseTaskServiceModule,
   AddTaskComponentModule,
-  NavbarComponentModule
+  NavbarComponentModule,
+  ImageCardComponentModule,
+  FirebaseImageServiceModule
 ],
   	declarations: [HomePage],
   	providers: [],

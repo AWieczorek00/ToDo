@@ -1,6 +1,8 @@
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, ViewEncapsulation, ChangeDetectionStrategy, Output, EventEmitter, Inject } from '@angular/core';
 import { ADDS_TASK_DTO, AddsTaskDtoPort } from '../../../../application/ports/secondary/adds-task.dto-port';
+import Swal from 'sweetalert2';
+import { formatDate } from '@angular/common';
 
 @Component({ selector: 'lib-add-task', templateUrl: './add-task.component.html', encapsulation: ViewEncapsulation.None, changeDetection: ChangeDetectionStrategy.OnPush })
 export class AddTaskComponent {
@@ -26,6 +28,16 @@ export class AddTaskComponent {
     
   }
 
+  alert(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Zadanie dodane',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  }
+
 
   onContantSubmited(form: FormGroup): void {
     if (form.invalid) {
@@ -36,7 +48,8 @@ export class AddTaskComponent {
     if (this.addTask) {
       this._addsTaskDto.add({
         content: form.get('content')?.value,
-        isActive: false
+        isActive: false,
+        dateOfCreated:  formatDate(new Date(), 'dd-MM-yyyy HH:mm','en')
       });
     }
     this.addTask = false;

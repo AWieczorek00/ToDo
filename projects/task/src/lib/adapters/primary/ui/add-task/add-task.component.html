@@ -1,4 +1,3 @@
-
 <button *ngIf="showButtonAddTask" style="background-color: #7749F8; margin-left: 13%;"
     class="mt-1 btn btn-primary btn-sm" (click)="showFrom = true;showButtonAddTask=false">Dodaj zadanie</button>
 <div *ngIf="showFrom">
@@ -10,8 +9,10 @@
             </div>
         </div>
         <div class="mt-4">
-            <input style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary"
-                (click)="addTask = true;showButtonAddTask=true;">
+            <input style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary" (click)="addTask = true;
+                showButtonAddTask=true;
+                alert() 
+                ">
             <button style="background-color: #7749F8;" class="ms-5 btn btn-primary"
                 (click)="showButtonAddTask=true">Anuluj</button>
         </div>

@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary"
-          (click)="onDeleteClicked(item.id);modal.close();showAlert=true">Tak</button>
+          (click)="onDeleteClicked(item.id);modal.close();alert()">Tak</button>
         <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Zamkni</button>
       </div>
     </ng-template>
@@ -79,4 +79,4 @@
   </fieldset>
 </div>
 
-<hr class="w-75 mx-auto">
+<hr class="w-75 mx-auto" *ngIf="(tasks$  | async)?.length!=0">

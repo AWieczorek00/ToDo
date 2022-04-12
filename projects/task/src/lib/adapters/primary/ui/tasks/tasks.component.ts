@@ -25,7 +25,9 @@ export class TasksComponent {
     private modalService: NgbModal,
     private _router: Router) { }
 
-  tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll();
+  tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll().
+    pipe(map(events => events.sort(
+      (a, b) => new Date(b.dateOfCreated).getTime() - new Date(a.dateOfCreated).getTime())));
   deleteAlert: string = "Zadanie usunięte";
   showAlert: boolean = false;
   myDate = new Date();

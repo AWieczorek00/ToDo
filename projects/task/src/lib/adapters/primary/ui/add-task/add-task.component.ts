@@ -15,18 +15,8 @@ export class AddTaskComponent {
   showFrom: boolean = false;
   showButtonAddTask: boolean = true;
   addTask: boolean = false;
-  showNotification: boolean = true;
-  creatNotification: string = "Zadanie stworzone";
+  taskText = '';
 
-
-  @Output() sendNotification = new EventEmitter<boolean>();
-  // @Output() sendMessage = new EventEmitter<string>();
-
-
-  sendMessage() {
-    this.sendNotification.emit(this.showNotification);
-    
-  }
 
   alert(){
     Swal.fire({
@@ -43,16 +33,19 @@ export class AddTaskComponent {
     if (form.invalid) {
       this.addTask = false;
       this.showFrom = false;
+      this.taskText='';
       return
     }
     if (this.addTask) {
       this._addsTaskDto.add({
         content: form.get('content')?.value,
         isActive: false,
-        dateOfCreated:  formatDate(new Date(), 'dd-MM-yyyy HH:mm','en')
+        dateOfCreated:  formatDate(new Date(), 'dd-MM-yyyy HH:mm:ss','en')
       });
+      this.taskText='';
     }
     this.addTask = false;
     this.showFrom = false;
+    this.taskText='';
   }
 }

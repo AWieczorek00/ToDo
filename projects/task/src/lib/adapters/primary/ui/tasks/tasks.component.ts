@@ -28,7 +28,6 @@ export class TasksComponent {
   tasks$: Observable<TaskDTO[]> = this._getsAllTaskDto.getAll().
     pipe(map(events => events.sort(
       (a, b) => new Date(b.dateOfCreated).getTime() - new Date(a.dateOfCreated).getTime())));
-  deleteAlert: string = "Zadanie usunięte";
   showAlert: boolean = false;
   myDate = new Date();
 

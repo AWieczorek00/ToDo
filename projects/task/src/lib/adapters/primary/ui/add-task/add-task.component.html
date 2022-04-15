@@ -4,15 +4,13 @@
     <form style="margin-left: 13%;" [formGroup]="content" (ngSubmit)="onContantSubmited(content)">
         <div class="row g-3 align-items-center">
             <div class="col-5">
-                <textarea class="form-control" type="text" formControlName="content"
-                    placeholder="Twoje zadanie" [(ngModel)]="taskText"></textarea>
+                <textarea class="form-control" type="text" formControlName="content" placeholder="Twoje zadanie"
+                    [(ngModel)]="taskText"></textarea>
             </div>
         </div>
         <div class="mt-4">
-            <input style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary" (click)="addTask = true;
-                showButtonAddTask=true;
-                alert() 
-                ">
+            <input style="background-color: #7749F8;" type="submit" value="Dodaj" class="btn btn-primary"
+                (click)="addTask = true; showButtonAddTask=true; alert()" [disabled]="taskText === ''">
             <button style="background-color: #7749F8;" class="ms-5 btn btn-primary"
                 (click)="showButtonAddTask=true">Anuluj</button>
         </div>

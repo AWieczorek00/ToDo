@@ -1,9 +1,9 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, Inject} from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { TaskDTO } from '../../../../application/ports/secondary/task.dto';
 import { GETS_ALL_TASK_DTO, GetsAllTaskDtoPort } from '../../../../application/ports/secondary/gets-all-task.dto-port';
 import { REMOVES_TASK_DTO, RemovesTaskDtoPort } from '../../../../application/ports/secondary/removes-task.dto-port';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SetsTaskDtoPort, SETS_TASK_DTO } from 'projects/task/src/lib/application/ports/secondary/sets-task.dto-port';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';

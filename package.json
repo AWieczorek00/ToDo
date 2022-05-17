@@ -1,6 +1,7 @@
 {
   "name": "to-do",
   "version": "0.0.0",
+  "homepage": "https://awieczorek00.github.io/ToDo/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
